@@ -1,10 +1,11 @@
 import React from 'react';
+import Counter from './features/counter/Counter';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline" id="8">
-      jfsklj
-    </h1>
+    <main className="bg-gray-50 min-h-screen justify-center">
+      <Counter />
+    </main>
   );
 }
 

@@ -34,5 +34,7 @@ module.exports = {
       },
     },
   },
-  rules: {},
+  rules: {
+    "@typescript-eslint/no-explicit-any": ["off"]
+  },
 };
