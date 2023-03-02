@@ -1,25 +1,27 @@
 import BaseError from "../utils/errors/baseError";
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
 const logError = (err: Error) => {
   console.error(err);
 };
 
+//log all incoming errors
 const logErrorMiddleware = (
   err: Error,
   req: Request,
   res: Response,
-  next: (err: Error) => void
+  next: NextFunction
 ) => {
   logError(err);
   next(err);
 };
 
+//return known operational errors to the client
 const returnError = (
   err: BaseError,
   req: Request,
   res: Response,
-  next: (err: Error) => void
+  next: NextFunction
 ) => {
   if (err instanceof BaseError && isOperationalError(err)) {
     res.status(err.statusCode).json({ error: err.message });
@@ -28,15 +30,16 @@ const returnError = (
   }
 };
 
+//return unknown errors to the client
 const catchAllErrors = (
   err: Error,
   req: Request,
   res: Response,
-  next?: (err: Error) => void
+  next: NextFunction
 ) => {
-  logError(err);
   res.status(500);
-  res.render("error", { error: err });
+  res.json({ error: err.message });
+  next();
 };
 
 const isOperationalError = (err: BaseError) => {

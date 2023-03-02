@@ -1,5 +1,5 @@
 export default {
-    port: 8000,
+    port: 3000,
     accessTokenExpiresIn: 15,
     dbName: 'jwtAuth',
     host_name: 'localhost',
