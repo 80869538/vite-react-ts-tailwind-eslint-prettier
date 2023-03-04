@@ -11,7 +11,7 @@ const connectDB = async () => {
   try {
     mongoose.set("strictQuery", false);
     await mongoose.connect(dbUrl);
-    Logger.info("Database connected...");
+    Logger.info("Mongo database connected...");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     Logger.error(error.message);

@@ -12,6 +12,9 @@ const stream: StreamOptions = {
 // };
 
 // Build the morgan middleware
-const morganMiddleware = morgan("common", { stream });
+const morganMiddleware = morgan(
+  ":remote-addr :method :url :status :res[content-length] - :response-time ms",
+  { stream }
+);
 
 export default morganMiddleware;
