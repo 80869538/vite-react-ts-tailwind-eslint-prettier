@@ -1,9 +1,6 @@
-import * as dotenv from "dotenv";
-dotenv.config();
 import express, { NextFunction, Request, Response } from "express";
 import { Api404Error } from "./utils/errors/apiError";
 import config from "config";
-import connectDB from "./utils/connectDB";
 import { returnError, catchAllErrors } from "./middlewares/errorHandler";
 import cookieParser from "cookie-parser";
 import Logger from "./utils/logger";
@@ -57,8 +54,4 @@ app.use(returnError);
 // If error is not operational, return 500
 app.use(catchAllErrors);
 
-const port = config.get<number>("port");
-app.listen(port, () => {
-  Logger.info(`Server started on port: ${port}`);
-  connectDB();
-});
+export default app;
