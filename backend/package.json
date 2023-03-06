@@ -8,7 +8,7 @@
     "format": "prettier --write 'src/**/*.{js,ts,md,json}' 'tests/**/*.{js,ts,md,json}'",
     "start-dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
     "start-prod": "NODE_ENV=production ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
-    "test": "NODE_ENV=test jest ./tests/ --detectOpenHandles"
+    "test": "NODE_ENV=test jest ./tests/ --detectOpenHandles --silent=false --verbose false"
   },
   "author": "Andrew",
   "license": "ISC",
